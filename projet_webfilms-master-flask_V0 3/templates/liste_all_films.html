@@ -1,0 +1,16 @@
+{% extends "common_layout.html" %}
+{% block title %} Liste de tous les films {% endblock %}
+
+{% block container %}
+
+<h1 class="title is-1">Liste de tous les films</h1>
+<table class="table is-narrow is-hoverable is-bordered">
+    <thead><tr><td><b>Titre</b></td><td><b>Année</b></td><td><b>Genre</b></td></thead>
+    <tbody>
+    {% for titre, annee, genre in films %}
+        <tr><td>{{ titre }}</td><td>{{ annee }}</td><td>{{ genre }}</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
