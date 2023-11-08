@@ -1,6 +1,6 @@
 import sqlite3
 
-DBNAME = "films.db"
+DBNAME = "InfosFilms.db"
 
 def _select(requete, params=None):
     """ Exécute une requête type select"""
@@ -24,4 +24,8 @@ def get_films_by(id_director):
 def get_all_films():
     requete = """select film.titre, film.annee, genre.nom
                         from film inner join genre on film.idGenre=genre.id"""
+    return _select(requete)
+
+def get_all_genre():
+    requete = """SELECT genre.nom FROM genre"""
     return _select(requete)

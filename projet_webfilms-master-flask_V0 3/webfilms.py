@@ -18,7 +18,10 @@ def films_de(id_real):
     print(films)
     return render_template("liste_films.html", films=films)
 
+@app.route('/admin_getGenre')
+def admin_genre():
+    films = db.get_all_genre()
+    return render_template("liste_genre.html", films=films)
 
-   
 if __name__ == "__main__":
     app.run()
