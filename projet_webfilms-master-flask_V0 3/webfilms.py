@@ -28,5 +28,15 @@ def admin_real():
     reals = db.get_all_reals()
     return render_template("liste_all_real.html", reals=reals)
 
+# @app.route('/admin_getActeur')
+# def admin_acteur():
+#     acteurs = db.get_all_acteurs()
+#     return render_template("liste_all_acteur.html", acteurs=acteurs)
+
+# @app.route('/admin_getCommentaire')
+# def admin_commentaire():
+#     commentaires = db.get_commentaires()
+#     return render_template("liste_commentaire.html", commentaires=commentaires)
+
 if __name__ == "__main__":
     app.run()
