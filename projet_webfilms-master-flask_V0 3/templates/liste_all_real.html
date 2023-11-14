@@ -7,10 +7,16 @@
 <h1 class="title is-1">Liste des Réalisateurs</h1>
 
 <table class="table is-narrow is-hoverable is-bordered">
-    <thead><tr><td><b>Titre</b></td><td><b>Année</b></td><td><b>Pays</b></td></thead>
+    <thead><tr>
+        <td> <b>Id</b> </td>
+        <td> <b>Titre</b> </td>
+        <td> <b>Année</b> </td>
+        <td> <b>Pays</b> </td>
+        <td> <b>Sexe</b> </td>
+    </tr></thead>
     <tbody>
-    {% for nom, naissance, pays in reals %}
-        <tr><td>{{ nom }}</td><td>{{ naissance }}</td><td>{{ pays }}</td></tr>
+    {% for id, nom, naissance, pays, sexe in reals %}
+        <tr><td>{{ id }}</td><td>{{ nom }}</td><td>{{ naissance }}</td><td>{{ pays }}</td><td>{{ sexe }}</td></tr>
     {% endfor %}
     </tbody>
 </table>

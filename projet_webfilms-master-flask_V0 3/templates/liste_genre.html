@@ -4,13 +4,19 @@
 {% block container %}
 
 
-<h1 class="title is-1">Liste des genres</h1>
+<h1 class="title is-1"> Liste des genres </h1>
 
 <table class="table is-narrow is-hoverable is-bordered">
-    <thead><tr><td><b>Nom</b></td></thead>
+    <thead>
+        <tr>
+            <td> <b>Id</b> </td>
+            <td> <b>Nom</b> </td>
+            <td> <b>Description</b> </td>
+        </tr>
+    </thead>
     <tbody>
-    {% for nom in films %}
-        <tr><td>{{ nom }}</td>
+    {% for id, nom, description in genres %}
+        <tr> <td>{{ id }}</td> <td>{{ nom }}</td> <td>A venir ;)</td> </tr>
     {% endfor %}
     </tbody>
 </table>
