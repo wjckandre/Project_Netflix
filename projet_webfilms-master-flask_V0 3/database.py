@@ -22,8 +22,9 @@ def get_films_by(id_director):
     return _select(requete, params=(id_director,))
 
 def get_all_films():
-    requete = """select film.titre, film.annee, genre.nom
-                        from film inner join genre on film.idGenre=genre.id"""
+    requete = """select film.titre, film.annee, genre.nom, Affiche.nom from film 
+                        inner join genre on film.idGenre=genre.id
+                        inner join Affiche on film.idAffiche=Affiche.id"""
     return _select(requete)
 
 def get_all_genre():
