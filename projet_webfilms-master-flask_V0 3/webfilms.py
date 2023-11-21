@@ -38,5 +38,13 @@ def admin_commentaire():
     commentaires = db.get_commentaires()
     return render_template("liste_commentaire.html", commentaires=commentaires)
 
+@app.route('/film/<int:id_film>')
+def film(id_film):
+    print(id_film)
+    film = db.get_film(id_film)
+    print(film)
+    return render_template("film.html", film=film)
+
+
 if __name__ == "__main__":
     app.run()
