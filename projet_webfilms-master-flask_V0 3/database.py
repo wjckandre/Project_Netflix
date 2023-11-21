@@ -22,7 +22,7 @@ def get_films_by(id_director):
     return _select(requete, params=(id_director,))
 
 def get_all_films():
-    requete = """select film.titre, film.annee, genre.nom, Affiche.nom from film 
+    requete = """select film.titre, film.annee, genre.nom, Affiche.nom, film.id from film 
                         inner join genre on film.idGenre=genre.id
                         inner join Affiche on film.idAffiche=Affiche.id"""
     return _select(requete)
@@ -34,3 +34,19 @@ def get_all_genre():
 def get_all_reals():
     requete = """SELECT personne.id, personne.nom, personne.pays, personne.naissance, personne.sexe FROM personne INNER JOIN film ON personne.id = film.idRealisateur WHERE film.idRealisateur = personne.id"""
     return _select(requete)
+
+def get_film(id_film):
+    requete = """   select film.titre, film.annee, film.nbSpectateurs, genre.nom , personne.nom , film.note , Affiche.nom from film
+                    inner join genre on film.idGenre=genre.id
+                    inner join Affiche on film.idAffiche=Affiche.id
+                    inner join personne on personne.id=film.idRealisateur
+                    WHERE film.id=?"""
+    return _select(requete, params=(id_film,))
+
+#def get_acteurs():
+#   requete = """..."""
+#   return _select(requete)
+
+#def get_commentaire():
+#   requete = """..."""
+#   return _select(requete)
