@@ -1,18 +1,25 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste de tous les films</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% extends "common_layout.html" %}
+{% block title %} Liste de tous les films {% endblock %}
+{% block container %}
     <div class="container">
         <header>
             <h1>Nous offrons les films suivant</h1>
         </header>
         <div class="film-grid">
+            
+            {% for titre, annee, genre, affiche, id in films %}
             <div class="film-item">
+                <a href="film/5">
+                <img src="{{ url_for('static',filename='{}'.format(affiche) ) }}">
+                <div class="film-info">
+                    <h3 class="film-title">{{ titre }}</h3>
+                    <p class="film-details">{{ annee }} | {{ genre }}</p>
+                </div>
+            </a>
+            </div>
+            
+            {% endfor %}
+            <!-- <div class="film-item">
                 <img src="{{ url_for('static', filename='armageddon.png') }}" alt="Armageddon">
                 <div class="film-info">
                     <h3 class="film-title">Armageddon</h3>
@@ -43,7 +50,7 @@
             <div class="film-item">
                 <img src="{{ url_for('static', filename='forestgump.png') }}" alt="Forrest Gump">
                 <div class="film-info">
-                    <h3 class="film-title">Forrest Gump</h3>
+                    <h3 class="film-title">Forest Gump</h3>
                     <p class="film-details">1994 | Drama</p>
                 </div>
             </div>
@@ -95,8 +102,9 @@
                     <h3 class="film-title">Titanic</h3>
                     <p class="film-details">1997 | Drama, Romance</p>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
-</body>
+
+{% endblock %} 
 </html>
