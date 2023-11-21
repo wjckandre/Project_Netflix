@@ -34,11 +34,3 @@ def get_all_genre():
 def get_all_reals():
     requete = """SELECT personne.id, personne.nom, personne.pays, personne.naissance, personne.sexe FROM personne INNER JOIN film ON personne.id = film.idRealisateur WHERE film.idRealisateur = personne.id"""
     return _select(requete)
-
-#def get_acteurs():
-#   requete = """..."""
-#   return _select(requete)
-
-#def get_commentaire():
-#   requete = """..."""
-#   return _select(requete)
