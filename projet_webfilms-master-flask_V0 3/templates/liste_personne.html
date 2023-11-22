@@ -1,0 +1,26 @@
+{% extends "common_layout.html" %}
+{% block title %} Liste des personnes {% endblock %}
+
+{% block container %}
+
+
+<h1 class="title is-1"> Liste des personnes </h1>
+
+<table class="table is-narrow is-hoverable is-bordered">
+    <thead>
+        <tr>
+            <td> <b>Id</b> </td>
+            <td> <b>Nom</b> </td>
+            <td> <b>Pays</b> </td>
+            <td> <b>Date de naissance</b> </td>
+            <td> <b>Sexe</b> </td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for id, nom, pays, naissance, sexe in personnes %}
+        <tr> <td>{{ id }}</td> <td>{{ nom }}</td> <td>{{ pays }}</td> <td>{{ naissance }}</td> <td>{{ sexe }}</td> </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "common_layout.html" %}
+{% block title %} Liste des trailers {% endblock %}
+
+{% block container %}
+
+
+<h1 class="title is-1"> Liste des trailers </h1>
+
+<table class="table is-narrow is-hoverable is-bordered">
+    <thead>
+        <tr>
+            <td> <b>Id</b> </td>
+            <td> <b>Nom</b> </td>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for id, nom in trailers %}
+        <tr> <td>{{ id }}</td> <td>{{ nom }}</td> </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

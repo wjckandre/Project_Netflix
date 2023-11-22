@@ -28,15 +28,20 @@ def admin_real():
     reals = db.get_all_reals()
     return render_template("liste_all_real.html", reals=reals)
 
-@app.route('/admin_getActeur')
-def admin_acteur():
-    acteurs = db.get_all_acteurs()
-    return render_template("liste_all_acteur.html", acteurs=acteurs)
+@app.route('/admin_getPersonne')
+def admin_personne():
+    personnes = db.get_personne()
+    return render_template("liste_personne.html", personnes=personnes)
 
-@app.route('/admin_getCommentaire')
-def admin_commentaire():
-    commentaires = db.get_commentaires()
-    return render_template("liste_commentaire.html", commentaires=commentaires)
+@app.route('/admin_getTrailer')
+def admin_trailer():
+    trailers = db.get_trailer()
+    return render_template("liste_trailer.html", trailers=trailers)
+
+@app.route('/admin_getAffiche')
+def admin_affiche():
+    affiches = db.get_affiche()
+    return render_template("liste_affiche.html", affiches=affiches)
 
 @app.route('/film/<int:id_film>')
 def film(id_film):
