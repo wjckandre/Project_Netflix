@@ -9,7 +9,7 @@
             
             {% for titre, annee, genre, affiche, id in films %}
             <div class="film-item">
-                <a href="film/5">
+                <a href="{{ url_for('film', id_film = id ) }}">
                 <img src="{{ url_for('static',filename='{}'.format(affiche) ) }}">
                 <div class="film-info">
                     <h3 class="film-title">{{ titre }}</h3>
