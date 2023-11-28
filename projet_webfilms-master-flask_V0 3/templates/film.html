@@ -8,22 +8,22 @@
     <thead><tr>
         <td><b>Titre</b></td>
         <td><b>Année</b></td>
-        <td><b>Nombre de Spectateur</b></td>
         <td><b>Genre</b></td>
         <td><b>Realisateur</b></td>
         <td><b>Note</b></td>
+        <td><b>Description</b></td>
         <td><b>Affiche</b></td>
     </thead>
     <tbody>
-    {% for titre, annee, nbSpectateur, genre, real, note, affiche in film %}
+    {% for titre, annee, genre, real, note, description, affiche in film %}
         <tr>
             <td>{{ titre }}</td>
             <td>{{ annee }}</td>
-            <td>{{ nbSpectateur }}</td>
             <td>{{ genre }}</td>
             <td>{{ real }}</td>
             <td>{{ note }}</td>
-            <td><img src="{{ url_for('static',filename='{}'.format(affiche) ) }}"></td>
+            <td>{{ description }}</td>
+            <td><img src='https://www.themoviedb.org/t/p/w600_and_h900_bestv2{{affiche}}'></td>
         </tr>
     {% endfor %}
     </tbody>

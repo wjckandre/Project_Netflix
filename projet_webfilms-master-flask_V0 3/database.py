@@ -1,6 +1,6 @@
 import sqlite3
 
-DBNAME = "InfosFilms.db"
+DBNAME = "InfosFilmsAuto.db"
 
 def _select(requete, params=None):
     """ Exécute une requête type select"""
@@ -22,9 +22,8 @@ def get_films_by(id_director):
     return _select(requete, params=(id_director,))
 
 def get_all_films():
-    requete = """select film.titre, film.annee, genre.nom, Affiche.nom, film.id from film 
-                        inner join genre on film.idGenre=genre.id
-                        inner join Affiche on film.idAffiche=Affiche.id"""
+    requete = """select film.titre, film.annee, genre.nom, film.Affiche , film.id from film 
+                        inner join genre on film.idGenre=genre.id"""
     return _select(requete)
 
 def get_all_genre():
@@ -32,7 +31,9 @@ def get_all_genre():
     return _select(requete)
 
 def get_all_reals():
-    requete = """SELECT personne.id, personne.nom, personne.pays, personne.naissance, personne.sexe FROM personne INNER JOIN film ON personne.id = film.idRealisateur WHERE film.idRealisateur = personne.id"""
+    requete = """SELECT personne.id, personne.nom, personne.pays, personne.naissance, personne.sexe FROM personne 
+                 INNER JOIN film ON personne.id = film.idRealisateur 
+                 WHERE film.idRealisateur = personne.id"""
     return _select(requete)
 
 def get_affiche():
@@ -48,9 +49,8 @@ def get_personne():
     return _select(requete)
 
 def get_film(id_film):
-    requete = """   select film.titre, film.annee, film.nbSpectateurs, genre.nom , personne.nom , film.note , Affiche.nom from film
+    requete = """   select film.titre, film.annee, genre.nom , personne.nom , film.note , film.description, film.Affiche from film
                     inner join genre on film.idGenre=genre.id
-                    inner join Affiche on film.idAffiche=Affiche.id
                     inner join personne on personne.id=film.idRealisateur
                     WHERE film.id=?"""
     return _select(requete, params=(id_film,))

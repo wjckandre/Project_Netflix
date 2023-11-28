@@ -8,9 +8,10 @@
         <div class="film-grid">
             
             {% for titre, annee, genre, affiche, id in films %}
+            
             <div class="film-item">
                 <a href="{{ url_for('film', id_film = id ) }}">
-                <img src="{{ url_for('static',filename='{}'.format(affiche) ) }}">
+                <img src='https://www.themoviedb.org/t/p/w600_and_h900_bestv2{{affiche}}'>
                 <div class="film-info">
                     <h3 class="film-title">{{ titre }}</h3>
                     <p class="film-details">{{ annee }} | {{ genre }}</p>
