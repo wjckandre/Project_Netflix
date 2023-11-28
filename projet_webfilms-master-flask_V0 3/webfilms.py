@@ -33,11 +33,6 @@ def admin_personne():
     personnes = db.get_personne()
     return render_template("liste_personne.html", personnes=personnes)
 
-@app.route('/admin_getTrailer')
-def admin_trailer():
-    trailers = db.get_trailer()
-    return render_template("liste_trailer.html", trailers=trailers)
-
 @app.route('/admin_getAffiche')
 def admin_affiche():
     affiches = db.get_affiche()

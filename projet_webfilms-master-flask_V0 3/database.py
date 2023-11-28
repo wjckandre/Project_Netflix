@@ -37,7 +37,7 @@ def get_all_reals():
     return _select(requete)
 
 def get_affiche():
-    requete = """SELECT * FROM Affiche"""
+    requete = """SELECT id, titre, Affiche FROM film"""
     return _select(requete)
 
 def get_trailer():
