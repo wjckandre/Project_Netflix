@@ -15,8 +15,8 @@
         <td> <b>Sexe</b> </td>
     </tr></thead>
     <tbody>
-    {% for id, nom, naissance, pays, sexe in reals %}
-        <tr><td>{{ id }}</td><td>{{ nom }}</td><td>{{ naissance }}</td><td>{{ pays }}</td><td>{{ sexe }}</td></tr>
+    {% for id, nom, sexe, popularity, profile in reals %}
+        <tr><td>{{ id }}</td><td>{{ nom }}</td><td>{{ sexe }}</td><td>{{ popularity }}</td><td> <img src='https://www.themoviedb.org/t/p/w600_and_h900_bestv2{{profile}}'> </td></tr>
     {% endfor %}
     </tbody>
 </table>
