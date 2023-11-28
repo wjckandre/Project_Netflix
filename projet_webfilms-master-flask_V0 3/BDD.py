@@ -16,8 +16,11 @@ def _select(requete, params=None):
     return res
 page = 1
 url_movie = "https://api.themoviedb.org/3/trending/movie/day?language=en-US"
-url_personne = "https://api.themoviedb.org/3/trending/person/day?language=en-US&page=8"
+
 url_genre = "https://api.themoviedb.org/3/genre/movie/list?language=en"
+
+def url_personne(page):
+    return  f"https://api.themoviedb.org/3/trending/person/day?language=en-US&page={page}"
 
 headers = {
     "accept": "application/json",
@@ -56,13 +59,9 @@ for z in search_id('genre'):
     list_genre_id.append(z[0])
 
 response_movie = requests.get(url_movie, headers=headers)
-response_personne = requests.get(url_personne, headers=headers)
 response_genre = requests.get(url_genre, headers=headers)
 
 
-# for x in range(100):  
-    # response_personne = requests.get(url_personne, headers=headers)
-    # page =+1
 
 def NotIn(lst, x):
     count = 0
@@ -72,18 +71,24 @@ def NotIn(lst, x):
     return count==0
 
 def remplissage_film_personne():
-    for i in response_personne.json()['results']:
-        if i['known_for_department'] == 'Directing' and NotIn(list_personne_id, i['id']):
-            insert_real(i['id'], i['name'], i['popularity'], i['profile_path'], i['gender'])
-            list_personne_id.append(i['id'])
-            print(i['id'], i['name'], i['popularity'], i['profile_path'], i['gender'])
-        if i['known_for_department'] == 'Directing':
-            for a in i['known_for']:
-                
-                if NotIn(list_film_id, a['id']):
-                    insert_movie(a['id'], a['title'], a['release_date'], i["id"], a['genre_ids'][0], a['vote_average'], a['overview'], 'blub', a['poster_path'], a['popularity'])
-                    list_film_id.append(a['id'])
-                    print(a['id'], a['title'], a['release_date'], i["id"], a['genre_ids'][0], a['vote_average'], a['overview'], 'blub', a['poster_path'], a['popularity'])
+    for x in range(1, 13):  
+        response_personne = requests.get(url_personne(x), headers=headers)
+        for i in response_personne.json()['results']:
+            if i['known_for_department'] == 'Directing' and NotIn(list_personne_id, i['id']):
+                insert_real(i['id'], i['name'], i['popularity'], i['profile_path'], i['gender'])
+                list_personne_id.append(i['id'])
+                print(i['id'], i['name'], i['popularity'], i['profile_path'], i['gender'])
+            if i['known_for_department'] == 'Directing':
+                for a in i['known_for']:
+                    
+                    if NotIn(list_film_id, a['id']):
+                        try: titre=a['title'] 
+                        except: titre=a['name']
+                        try: date=a['release_date']
+                        except: date=a['first_air_date']
+                        insert_movie(a['id'], titre, date, i["id"], a['genre_ids'][0], a['vote_average'], a['overview'], 'blub', a['poster_path'], a['popularity'])
+                        list_film_id.append(a['id'])
+                        print(a['id'], titre, date, i["id"], a['genre_ids'][0], a['vote_average'], a['overview'], 'blub', a['poster_path'], a['popularity'])
 
 def remplissage_genre():
     for i in response_genre.json()['genres']:
