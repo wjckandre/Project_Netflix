@@ -1,5 +1,6 @@
 from flask import render_template, request, Flask
 import database as db
+from BDD import *
 
 app = Flask(__name__)
 
@@ -45,6 +46,17 @@ def film(id_film):
     print(film)
     return render_template("film.html", film=film)
 
+@app.route('/database/refresh')
+def refreshDB():
+    return render_template('New_films.html')
+
+@app.route('/DB')
+def DB():
+    remplissage_film_personne()
+    films = db.get_all_films()
+    print("La fonction Python a été appelée !")
+    return inserted_movies
+# render_template("liste_all_films.html", films=films)
 
 if __name__ == "__main__":
     app.run(debug=True)

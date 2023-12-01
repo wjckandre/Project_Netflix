@@ -1,0 +1,21 @@
+{% extends "common_layout.html" %}
+{% block title %} Liste des nouveaux films {% endblock %}
+
+{% block container %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Template</title>
+</head>
+<body>
+    <h1>Vue Insertion</h1>
+    <form action="{{ url_for('DB') }}" method="get">
+        <button type="submit">Rajouter des films dans la Base de Donnée</button>
+    </form>
+</body>
+</html>
+
+{% endblock %}

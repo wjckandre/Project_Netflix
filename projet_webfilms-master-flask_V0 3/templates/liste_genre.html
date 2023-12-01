@@ -11,12 +11,11 @@
         <tr>
             <td> <b>Id</b> </td>
             <td> <b>Nom</b> </td>
-            <td> <b>Description</b> </td>
         </tr>
     </thead>
     <tbody>
-    {% for id, nom, description in genres %}
-        <tr> <td>{{ id }}</td> <td>{{ nom }}</td> <td>A venir ;)</td> </tr>
+    {% for id, nom in genres %}
+        <tr> <td>{{ id }}</td> <td>{{ nom }}</td> </tr>
     {% endfor %}
     </tbody>
 </table>

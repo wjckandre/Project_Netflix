@@ -4,8 +4,8 @@ body, html {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: url('netflixBackground.png') no-repeat center center fixed;
-    background-size: cover;
+    background: url('netflixBackground.png') no-repeat center center fixed; 
+    background-size: cover; 
     color: #fff;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
@@ -20,7 +20,7 @@ body, html {
 header h1 {
     font-family: 'Righteous', cursive; /* This is a distinctive, readable font */
     font-size: 3rem; /* Adjust the size as needed */
-    background: linear-gradient(45deg, #f5757b, #d86328); /* Standard gradient syntax */
+    background: linear-gradient(45deg, #f5757b, #d86328); /*Standard gradient syntax*/
     -webkit-background-clip: text; /* For WebKit browsers like Chrome and Safari */
     background-clip: text; /* Standard property for other browsers */
     -webkit-text-fill-color: transparent; /* For WebKit browsers */

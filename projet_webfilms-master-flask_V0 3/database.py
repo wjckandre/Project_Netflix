@@ -55,6 +55,8 @@ def get_film(id_film):
                     WHERE film.id=?"""
     return _select(requete, params=(id_film,))
 
+
+
 #def get_acteurs():
 #   requete = """..."""
 #   return _select(requete)
