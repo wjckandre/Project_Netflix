@@ -48,14 +48,14 @@
 {% endblock %}
 
 {% block content %}
-<nav class="navbar">
+<!-- <nav class="navbar">
     <img src="{{ url_for('static', filename='your-logo-filename.png') }}" alt="Logo">
-</nav>
+</nav> -->
 
 <div class="movie-container">
   {% for titre, annee, genre, real, note, description, affiche in film %}
   <div class="movie-card">
-    <img class="movie-image" src="{{ affiche }}" alt="{{ titre }} Poster">
+    <img class="movie-image" src='https://www.themoviedb.org/t/p/w600_and_h900_bestv2{{affiche}}' alt="{{ titre }} Poster">
     <div class="movie-content">
       <div class="movie-title">{{ titre }}</div>
       <div class="movie-info">{{ annee }} | {{ genre }} | {{ real }} | Rating: {{ note }}</div>
