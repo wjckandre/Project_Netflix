@@ -50,6 +50,7 @@ def search_id(table):
 list_personne_id = []
 list_film_id = []
 list_genre_id = []
+inserted_movies = []
 
 for x in search_id('personne'):
     list_personne_id.append(x[0])
@@ -88,6 +89,7 @@ def remplissage_film_personne():
                         except: date=a['first_air_date']
                         insert_movie(a['id'], titre, date, i["id"], a['genre_ids'][0], a['vote_average'], a['overview'], 'blub', a['poster_path'], a['popularity'])
                         list_film_id.append(a['id'])
+                        inserted_movies.append(titre)
                         print(a['id'], titre, date, i["id"], a['genre_ids'][0], a['vote_average'], a['overview'], 'blub', a['poster_path'], a['popularity'])
 
 def remplissage_genre():
