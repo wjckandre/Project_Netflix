@@ -31,13 +31,13 @@ def get_all_genre():
     return _select(requete)
 
 def get_all_reals():
-    requete = """SELECT personne.id, personne.nom, personne.pays, personne.naissance, personne.sexe FROM personne 
+    requete = """SELECT DISTINCT personne.id, personne.nom, personne.sexe, personne.popularity, personne.profile_path FROM personne 
                  INNER JOIN film ON personne.id = film.idRealisateur 
-                 WHERE film.idRealisateur = personne.id"""
+                 """
     return _select(requete)
 
 def get_affiche():
-    requete = """SELECT * FROM Affiche"""
+    requete = """SELECT id, titre, Affiche FROM film"""
     return _select(requete)
 
 def get_trailer():
@@ -54,6 +54,8 @@ def get_film(id_film):
                     inner join personne on personne.id=film.idRealisateur
                     WHERE film.id=?"""
     return _select(requete, params=(id_film,))
+
+
 
 #def get_acteurs():
 #   requete = """..."""

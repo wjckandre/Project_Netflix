@@ -14,8 +14,8 @@
         </tr>
     </thead>
     <tbody>
-    {% for id, nom in affiches %}
-        <tr> <td>{{ id }}</td> <td>{{ nom }}</td> <td><img src="{{ url_for('static',filename='{}'.format(nom) ) }}"></td> </tr>
+    {% for id, nom, affiche in affiches %}
+        <tr> <td>{{ id }}</td> <td>{{ nom }}</td> <td><img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2{{ affiche }}"></td> </tr>
     {% endfor %}
     </tbody>
 </table>
