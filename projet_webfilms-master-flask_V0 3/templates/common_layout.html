@@ -3,46 +3,39 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-  <!-- script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script-->
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='movie.png') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>{% block title %}Your Website Title{% endblock %}</title>
   {% block head %}{% endblock %}
-  <title>
-  {% block title %}{% endblock %}
-  </title>
 </head>
         
-<body class="has-navbar-fixed-top"> 
+<body> 
 
-<!--               BARRE DE NAVIGATION                                      -->
-<nav class="navbar is-fixed-top is-info">
+<nav class="navbar is-fixed-top">
     <div class="navbar-brand">
-        <a class="navbar-item" href="{{ url_for('index') }}">
-           <img alt='movie icon' src="{{ url_for('static', filename='movie.png') }} " height="20">
-       </a>
+        <img alt='Stanislas Production Logo' src="{{ url_for('static', filename='movie.png') }}">
     </div>
-    <div class="navbar-menu">
-        <div class="navbar-start">
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">Recherches</a>
-                <div class="navbar-dropdown">
-                    <a class="navbar-item" href="{{ url_for('index')}}">Tous les films</a>
-                </div>
-            </div>
-            
-        </div>  
-    </div>
+    <input class="input" id="searchInput" type="text" placeholder="Rechercher un film...">
 </nav>
 
 {% block content %}
-<!--               SECTION ET CONTAINER                                     -->
-  <section>
-    <div class="container content">
+<section class="section">
+    <div class="container">
     {% block container %}
+
     {% endblock %}
     </div>
-  </section>
+</section>
 {% endblock %}
+
+<script>
+// ici je veux que tu regardes ca, methode js pour chercher les films.
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', () => {
+
+    });
+  });
+</script>
+
 </body>
 </html>
