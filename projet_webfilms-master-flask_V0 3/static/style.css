@@ -4,8 +4,7 @@ body, html {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: url('netflixBackground.png') no-repeat center center fixed; 
-    background-size: cover; 
+    background-size: cover;
     color: #fff;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
@@ -18,17 +17,17 @@ body, html {
 }
 
 header h1 {
-    font-family: 'Righteous', cursive; /* This is a distinctive, readable font */
-    font-size: 3rem; /* Adjust the size as needed */
-    background: linear-gradient(45deg, #f5757b, #d86328); /*Standard gradient syntax*/
-    -webkit-background-clip: text; /* For WebKit browsers like Chrome and Safari */
-    background-clip: text; /* Standard property for other browsers */
-    -webkit-text-fill-color: transparent; /* For WebKit browsers */
-    color: transparent; /* Fallback for other browsers */
+    font-family: 'Righteous', cursive;
+    font-size: 3rem;
+    background: white; 
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; 
     text-align: center;
     padding: 20px 0;
     margin: 0;
-    user-select: none; /* Prevents the text from being selectable, if desired */
+    user-select: none;
 }
 
 .film-grid {
@@ -81,4 +80,35 @@ header h1 {
 .film-details {
     font-size: 0.8rem;
     margin: 5px 0 0;
+}
+
+.navbar {
+    background-color: #333; 
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.navbar-brand img {
+    height: auto; 
+    max-height: 120px;
+    width: auto;
+}
+
+.navbar .input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    margin-left: 1rem;
+    width: 100%;
+    max-width: 400px;
 }
