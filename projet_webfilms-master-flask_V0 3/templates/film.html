@@ -33,17 +33,44 @@
     flex-direction: column;
     justify-content: space-around;
   }
-  .movie-title {
-    font-size: 24px;
-    margin-bottom: 0.5em;
-  }
-  .movie-info {
-    font-size: 16px;
-    margin-bottom: 0.5em;
-  }
-  .movie-description {
-    font-size: 16px;
-  }
+
+/* Enhanced styles for title and description */
+.movie-title {
+  font-size: 32px; /* Bigger font size for the title */
+  font-weight: bold; /* Make it bold */
+  margin-bottom: 10px;
+}
+
+.movie-info {
+  font-size: 18px; /* Slightly larger than before */
+  color: #666; /* A less intense color for less important info */
+  margin-bottom: 10px;
+}
+
+.movie-description {
+  font-size: 16px;
+  line-height: 1.6; /* Improve readability */
+  color: #333; /* Darker color for better contrast */
+  font-style: italic; /* A style to denote commentary */
+  background-color: #f8f8f8; /* A light background to highlight the description */
+  padding: 15px;
+  border-radius: 8px; /* Rounded corners for the description background */
+  box-shadow: inset 0 0 10px #eaeaea; /* Inner shadow for some depth */
+}
+
+/* Hover effect for the movie card */
+.movie-card:hover {
+  transform: translateY(-5px); /* Move the card up slightly */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3); /* Stronger shadow for lifted effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Reset the transform on hover out */
+.movie-card:not(:hover) {
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 </style>
 {% endblock %}
 
