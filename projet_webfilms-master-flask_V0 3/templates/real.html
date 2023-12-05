@@ -1,0 +1,99 @@
+{% extends "common_layout.html" %}
+
+{% block head %}
+<style>
+  /* Custom styles */
+  .movie-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 4800px;
+    margin: auto;
+    padding: 20px;
+  }
+  .movie-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background: #fff;
+    color: #000;
+  }
+  .movie-image {
+    width: 150px;
+    object-fit: cover;
+    border-radius: 5px 0 0 5px;
+  }
+  .director-image {
+    width: 300px;
+    object-fit: cover;
+    border-radius: 5px 0 0 5px;
+  }
+  .movie-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .movie-title {
+    font-size: 24px;
+    margin-bottom: 0.5em;
+  }
+  .movie-info {
+    font-size: 16px;
+    margin-bottom: 0.5em;
+  }
+  .movie-description {
+    font-size: 16px;
+  }
+  
+  .director-card {
+    width: 50%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: line;
+    align-items: center;
+    max-width: 4800px;
+    margin: auto;
+}
+
+.movie-item {
+    margin-bottom: 10px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- <nav class="navbar">
+    <img src="{{ url_for('static', filename='your-logo-filename.png') }}" alt="Logo">
+</nav> -->
+
+
+  {% for nom, profile_path, popularity in realisateur %}
+  <div class="director-card">
+    <img class="director-image" src='https://www.themoviedb.org/t/p/w600_and_h900_bestv2{{profile_path}}' alt="{{ nom }} Poster">
+    <div class="movie-content">
+      <div class="movie-title">{{ nom }}</div>
+      <div class="movie-info">Popularity : {{ popularity }}</div>
+    </div>
+  
+  {% endfor %}
+  <div class="movie-container">
+  {% for id, titre, annee, genre, affiche in films %}
+  <div class="movie-card">
+    <img class="movie-image" src='https://www.themoviedb.org/t/p/w600_and_h900_bestv2{{affiche}}' alt="{{ titre }} Poster">
+    <div class="movie-content">
+      <div class="movie-title"><a href="{{ url_for('film', id_film=id )}}">{{ titre }}</a></div>
+      <div class="movie-info">{{ annee }} | {{ genre }}</div>
+    </div>
+  </div>
+
+  {% endfor %}
+  </div>
+</div>
+{% endblock %}
