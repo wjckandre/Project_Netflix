@@ -54,11 +54,3 @@ def get_film(id_film):
                     inner join personne on personne.id=film.idRealisateur
                     WHERE film.id=?"""
     return _select(requete, params=(id_film,))
-
-#def get_acteurs():
-#   requete = """..."""
-#   return _select(requete)
-
-#def get_commentaire():
-#   requete = """..."""
-#   return _select(requete)

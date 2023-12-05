@@ -8,9 +8,6 @@ def index():
     films = db.get_all_films()
     return render_template("liste_all_films.html", films=films)
 
-
-#essayez d'appeler cette route avec par exemple l'URL : http://127.0.0.1:5000/films_de/13848
-#13848 est l'id de Charles Chaplin
 @app.route('/films_de/<int:id_real>')
 def films_de(id_real):
     print(id_real)
@@ -49,7 +46,6 @@ def film(id_film):
     film = db.get_film(id_film)
     print(film)
     return render_template("film.html", film=film)
-
 
 if __name__ == "__main__":
     app.run(debug=True)
