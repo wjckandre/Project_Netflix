@@ -23,7 +23,7 @@ def get_films_by_director(id_director):
 
 def get_all_films():
     requete = """select film.titre, film.annee, genre.nom, film.Affiche , film.id from film 
-                        inner join genre on film.idGenre=genre.id"""
+                        inner join genre on film.idGenre=genre.id WHERE film.Affiche IS NOT NULL"""
     return _select(requete)
 
 def get_all_genre():
@@ -56,10 +56,10 @@ def get_film(id_film):
     return _select(requete, params=(id_film,))
 
 def get_films_by_name(name):
-    requete = """ select film.titre, film.annee, genre.nom, film.Affiche , film.id from film 
+    requete = f""" select film.titre, film.annee, genre.nom, film.Affiche , film.id from film 
                   inner join genre on film.idGenre=genre.id
-                  WHERE film.titre LIKE ?"""
-    return _select(requete, params=(name,))
+                  WHERE film.titre LIKE '{name}%'"""
+    return _select(requete)
 
 #def get_acteurs():
 #   requete = """..."""

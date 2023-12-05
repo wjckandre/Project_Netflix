@@ -17,6 +17,7 @@ def _select(requete, params=None):
 page = 1
 url_movie = "https://api.themoviedb.org/3/trending/movie/day?language=en-US"
 url_genre = "https://api.themoviedb.org/3/genre/movie/list?language=en"
+url_genre_TV = "https://api.themoviedb.org/3/genre/tv/list?language=en"
 
 def url_movie_search(titre):
     return f"https://api.themoviedb.org/3/search/movie?query={titre}&include_adult=true&language=en-US&page=1"
@@ -66,7 +67,7 @@ for z in search_id('genre'):
 
 response_movie = requests.get(url_movie, headers=headers)
 response_genre = requests.get(url_genre, headers=headers)
-
+response_genre_TV = requests.get(url_genre_TV, headers=headers)
 
 
 def NotIn(lst, x):
@@ -103,6 +104,11 @@ def remplissage_genre():
             insert_genre(i['id'], i['name'])
             print(i['id'], i['name'])
             list_genre_id.append(i['id'])
+    for i in response_genre_TV.json()['genres']:
+        if NotIn(list_genre_id, i['id']):
+            insert_genre(i['id'], i['name'])
+            print(i['id'], i['name'])
+            list_genre_id.append(i['id'])
 
 def get_info_search_movie(title_movie, nom_real):
     response_search_movie =  requests.get(url_movie_search(title_movie), headers=headers).json()['results'][0]
@@ -113,5 +119,4 @@ def get_info_search_movie(title_movie, nom_real):
         if NotIn(list_personne_id, response_search_person['id']):
             insert_real(response_search_person['id'], nom_real, response_search_person['popularity'], response_search_person['profile_path'], response_search_person['gender'])
             print(response_search_person)
-
 
