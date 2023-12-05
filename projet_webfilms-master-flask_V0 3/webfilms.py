@@ -53,9 +53,8 @@ def refreshDB():
 @app.route('/traiter_formulaire', methods=['POST'])
 def traiter_formulaire():
     nom_film = request.form['nom_film']
-    # Faites ce que vous voulez avec le nom du film, par exemple, imprimez-le dans la console
-    print(f"Nom du film saisi : {nom_film}")
-    get_info_search_movie(nom_film)
+    nom_real = request.form['nom_real']
+    get_info_search_movie(nom_film, nom_real)
     return f"Nom du film saisi : {nom_film}"
 
 

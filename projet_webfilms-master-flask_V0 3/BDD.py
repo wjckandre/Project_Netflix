@@ -24,6 +24,9 @@ def url_movie_search(titre):
 def url_personne(page):
     return  f"https://api.themoviedb.org/3/trending/person/day?language=en-US&page={page}"
 
+def url_search_person(name):
+    return f"https://api.themoviedb.org/3/search/person?query={name}&include_adult=false&language=en-US&page=1"
+
 headers = {
     "accept": "application/json",
     "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NmNlZDhiOWNmM2I5NGRkYjBjYzc2MzFkYzQ4YjE0NyIsInN1YiI6IjY1MmVhMDA5Y2FlZjJkMDBhZGE4MGQzOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.fVacvY556R8-Zg0eCBqUEBOSWaQso4RwpnVSuIEqNrU"
@@ -101,8 +104,14 @@ def remplissage_genre():
             print(i['id'], i['name'])
             list_genre_id.append(i['id'])
 
-def get_info_search_movie(title_movie):
+def get_info_search_movie(title_movie, nom_real):
     response_search_movie =  requests.get(url_movie_search(title_movie), headers=headers).json()['results'][0]
-    insert_movie(response_search_movie['id'], title_movie, response_search_movie['release_date'], 0, response_search_movie['genre_ids'][0], response_search_movie['vote_average'], response_search_movie['overview'] ,response_search_movie['video'], response_search_movie['poster_path'] ,response_search_movie['popularity'])
+    response_search_person = requests.get(url_search_person(nom_real), headers=headers).json()['results'][0]
+    if NotIn(list_film_id, response_search_movie['id']):
+        insert_movie(response_search_movie['id'], title_movie, response_search_movie['release_date'], response_search_person['id'], response_search_movie['genre_ids'][0], response_search_movie['vote_average'], response_search_movie['overview'] ,response_search_movie['video'], response_search_movie['poster_path'] ,response_search_movie['popularity'])
+        print(response_search_movie)
+        if NotIn(list_personne_id, response_search_person['id']):
+            insert_real(response_search_person['id'], nom_real, response_search_person['popularity'], response_search_person['profile_path'], response_search_person['gender'])
+            print(response_search_person)
 
 
