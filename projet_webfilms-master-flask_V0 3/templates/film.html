@@ -56,7 +56,7 @@
     <img class="movie-image" src='https://www.themoviedb.org/t/p/w600_and_h900_bestv2{{affiche}}' alt="{{ titre }} Poster">
     <div class="movie-content">
       <div class="movie-title">{{ titre }}</div>
-      <div class="movie-info">{{ annee }} | {{ genre }} | {{ real }} | Rating: {{ note }}</div>
+      <div class="movie-info">{{ annee }} | {{ genre }} | <a href="{{ url_for('real', nom_real=real )}}">{{ real }}</a> | Rating: {{ note }}</div>
       <p class="movie-description">{{ description }}</p>
     </div>
   </div>

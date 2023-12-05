@@ -66,6 +66,12 @@ def DB():
     return inserted_movies
 # render_template("liste_all_films.html", films=films)
 
+@app.route('/real/<nom_real>')
+def real(nom_real):
+    realisateur = db.get_infos_real(nom_real)
+    films = db.get_films_by_real(nom_real)
+    return render_template("real.html", realisateur=realisateur, films=films)
+
 @app.route('/rechercher', methods=['POST'])
 def rechercher():
     terme_recherche = request.form['terme_recherche']
