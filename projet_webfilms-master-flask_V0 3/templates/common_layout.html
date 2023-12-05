@@ -14,7 +14,10 @@
     <div class="navbar-brand">
         <a href='http://127.0.0.1:5000'><img alt='Stanislas Production Logo' src="{{ url_for('static', filename='movie.png') }}"></a>
     </div>
-    <input class="input" id="searchInput" type="text" placeholder="Rechercher un film...">
+    <form action="{{ url_for('rechercher') }}" method="post">
+    <input class="input" id="terme_recherche" type="text" name="terme_recherche" placeholder="Rechercher un film...">
+    <button type="submit">Rechercher</button>
+    </form>
 </nav>
 
 {% block content %}

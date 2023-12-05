@@ -14,7 +14,7 @@ def _select(requete, params=None):
     return res
 
 
-def get_films_by(id_director):
+def get_films_by_director(id_director):
     requete = """select film.titre, film.annee
                         from film
                         where film.idRealisateur=?
@@ -55,7 +55,11 @@ def get_film(id_film):
                     WHERE film.id=?"""
     return _select(requete, params=(id_film,))
 
-
+def get_films_by_name(name):
+    requete = """ select film.titre, film.annee, genre.nom, film.Affiche , film.id from film 
+                  inner join genre on film.idGenre=genre.id
+                  WHERE film.titre LIKE ?"""
+    return _select(requete, params=(name,))
 
 #def get_acteurs():
 #   requete = """..."""
