@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='fr'>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>{% block title %}Your Website Title{% endblock %}</title>
+  {% block head %}{% endblock %}
+</head>
+        
+<body> 
+
+<nav class="navbar is-fixed-top">
+    <div class="navbar-brand">
+        <a href='http://127.0.0.1:5000'><img alt='Stanislas Production Logo' src="{{ url_for('static', filename='movie.png') }}"></a>
+    </div>
+</nav>
+
+{% block content %}
+<section class="section">
+    <div class="container">
+    {% block container %}
+
+    {% endblock %}
+    </div>
+</section>
+{% endblock %}
+
+<script>
+// ici je veux que tu regardes ca, methode js pour chercher les films.
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', () => {
+
+    });
+  });
+</script>
+
+</body>
+</html>
