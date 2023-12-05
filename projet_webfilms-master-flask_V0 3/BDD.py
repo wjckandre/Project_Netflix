@@ -16,8 +16,10 @@ def _select(requete, params=None):
     return res
 page = 1
 url_movie = "https://api.themoviedb.org/3/trending/movie/day?language=en-US"
-
 url_genre = "https://api.themoviedb.org/3/genre/movie/list?language=en"
+
+def url_movie_search(titre):
+    return f"https://api.themoviedb.org/3/search/movie?query={titre}&include_adult=true&language=en-US&page=1"
 
 def url_personne(page):
     return  f"https://api.themoviedb.org/3/trending/person/day?language=en-US&page={page}"
@@ -72,7 +74,7 @@ def NotIn(lst, x):
     return count==0
 
 def remplissage_film_personne():
-    for x in range(1, 13):  
+    for x in range(1, 5):  
         response_personne = requests.get(url_personne(x), headers=headers)
         for i in response_personne.json()['results']:
             if i['known_for_department'] == 'Directing' and NotIn(list_personne_id, i['id']):
@@ -99,10 +101,8 @@ def remplissage_genre():
             print(i['id'], i['name'])
             list_genre_id.append(i['id'])
 
+def get_info_search_movie(title_movie):
+    response_search_movie =  requests.get(url_movie_search(title_movie), headers=headers).json()['results'][0]
+    insert_movie(response_search_movie['id'], title_movie, response_search_movie['release_date'], 0, response_search_movie['genre_ids'][0], response_search_movie['vote_average'], response_search_movie['overview'] ,response_search_movie['video'], response_search_movie['poster_path'] ,response_search_movie['popularity'])
 
-print(list_film_id)
-print(list_genre_id)
-print(list_personne_id)
-remplissage_film_personne()
-remplissage_genre()
 

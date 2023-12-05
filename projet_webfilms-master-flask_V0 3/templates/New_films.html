@@ -12,8 +12,10 @@
 </head>
 <body>
     <h1>Vue Insertion</h1>
-    <form action="{{ url_for('DB') }}" method="get">
-        <button type="submit">Rajouter des films dans la Base de Donnée</button>
+    <form action="{{ url_for('traiter_formulaire') }}" method="post">
+        <label for="nom_film">Nom du film :</label>
+        <input type="text" id="nom_film" name="nom_film" required>
+        <button type="submit">Envoyer</button>
     </form>
 </body>
 </html>

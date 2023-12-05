@@ -50,6 +50,15 @@ def film(id_film):
 def refreshDB():
     return render_template('New_films.html')
 
+@app.route('/traiter_formulaire', methods=['POST'])
+def traiter_formulaire():
+    nom_film = request.form['nom_film']
+    # Faites ce que vous voulez avec le nom du film, par exemple, imprimez-le dans la console
+    print(f"Nom du film saisi : {nom_film}")
+    get_info_search_movie(nom_film)
+    return f"Nom du film saisi : {nom_film}"
+
+
 @app.route('/DB')
 def DB():
     remplissage_film_personne()
