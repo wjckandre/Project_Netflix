@@ -78,7 +78,7 @@ def NotIn(lst, x):
     return count==0
 
 def remplissage_film_personne():
-    for x in range(1, 5):  
+    for x in range(1, 15):  
         response_personne = requests.get(url_personne(x), headers=headers)
         for i in response_personne.json()['results']:
             if i['known_for_department'] == 'Directing' and NotIn(list_personne_id, i['id']):
@@ -93,10 +93,10 @@ def remplissage_film_personne():
                         except: titre=a['name']
                         try: date=a['release_date']
                         except: date=a['first_air_date']
-                        insert_movie(a['id'], titre, date, i["id"], a['genre_ids'][0], a['vote_average'], a['overview'], 'blub', a['poster_path'], a['popularity'])
+                        insert_movie(a['id'], titre, date, i["id"], a['genre_ids'][0], a['vote_average'], a['overview'], a['video'], a['poster_path'], a['popularity'])
                         list_film_id.append(a['id'])
                         inserted_movies.append(titre)
-                        print(a['id'], titre, date, i["id"], a['genre_ids'][0], a['vote_average'], a['overview'], 'blub', a['poster_path'], a['popularity'])
+                        print(a['id'], titre, date, i["id"], a['genre_ids'][0], a['vote_average'], a['overview'], a['video'], a['poster_path'], a['popularity'])
 
 def remplissage_genre():
     for i in response_genre.json()['genres']:
@@ -120,3 +120,4 @@ def get_info_search_movie(title_movie, nom_real):
             insert_real(response_search_person['id'], nom_real, response_search_person['popularity'], response_search_person['profile_path'], response_search_person['gender'])
             print(response_search_person)
 
+remplissage_film_personne()
